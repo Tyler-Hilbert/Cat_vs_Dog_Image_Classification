@@ -5,7 +5,7 @@
 Results
 
 K=3, SCALED_SIZE=32, NUM_TEST_SAMPLES_PER=50
-Started runing: 6:32pm, Finished running: 2:42
+Started runing: 6:32pm, Finished running: 2:42am
 Correct dog predictions 24
 Dog prediction accuracy 0.48
 Correct cat predictions 29
@@ -26,13 +26,25 @@ Correct cat predictions 23
 Cat prediction accuracy 0.46
 
 K=23, SCALED_SIZE=32, NUM_TEST_SAMPLES_PER=50
-Started runing: 1:49am, Finished running:
+Started runing: 1:49am, Finished running: 8:09am
+Correct dog predictions 31
+Dog prediction accuracy 0.62
+Correct cat predictions 24
+Cat prediction accuracy 0.48
 
 K=45, SCALED_SIZE=32, NUM_TEST_SAMPLES_PER=50
-Started runing: 2:41am, Finished running:
+Started runing: 2:41am, Finished running: 8:58am
+Correct dog predictions 30
+Dog prediction accuracy 0.6
+Correct cat predictions 10
+Cat prediction accuracy 0.2
 
 K=101, SCALED_SIZE=32, NUM_TEST_SAMPLES_PER=50
-Started runing: 2:44am, Finished running:
+Started runing: 2:44am, Finished running: 9:00am
+Correct dog predictions 34
+Dog prediction accuracy 0.68
+Correct cat predictions 9
+Cat prediction accuracy 0.18
 '''
 
 import math
