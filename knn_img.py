@@ -45,6 +45,20 @@ Correct dog predictions 34
 Dog prediction accuracy 0.68
 Correct cat predictions 9
 Cat prediction accuracy 0.18
+
+K=201, SCALED_SIZE=32, NUM_TEST_SAMPLES_PER=25
+Started runing: 4:04pm, Finished running: 6:53pm
+Correct dog predictions 20
+Dog prediction accuracy 0.8
+Correct cat predictions 4
+Cat prediction accuracy 0.16
+
+K=301, SCALED_SIZE=32, NUM_TEST_SAMPLES_PER=25
+Started runing: 1:27pm, Finished running: 3:47pm
+Correct dog predictions 17
+Dog prediction accuracy 0.68
+Correct cat predictions 9
+Cat prediction accuracy 0.36
 '''
 
 import math
@@ -55,9 +69,9 @@ import random
 
 
 ##################################### Constants
-K = 101 # How many nearest neighbors to use for classification
+K = 201 # How many nearest neighbors to use for classification
 SCALED_SIZE = 32 # Number of X and Y pixels to scale images to
-NUM_TEST_SAMPLES_PER = 50 # Number of test images to set aside for each class
+NUM_TEST_SAMPLES_PER = 25 # Number of test images to set aside for each class
 DATA_PATH = "data/"
 DOG_LABEL = 'dog'
 CAT_LABEL = 'cat'
@@ -69,32 +83,23 @@ def main():
     imgFiles = [f for f in listdir(DATA_PATH) if isfile(join(DATA_PATH, f))]
     for imgFile in imgFiles:
         imgFile = DATA_PATH + imgFile
-        if DOG_LABEL in imgFile:
-            data[DOG_LABEL].append(imgFile)
-        elif CAT_LABEL in imgFile:
+        if CAT_LABEL in imgFile:
             data[CAT_LABEL].append(imgFile)
+        elif DOG_LABEL in imgFile:
+            data[DOG_LABEL].append(imgFile)
         else:
             error ("Not a valid label")
 
     # Split data
-    testData = {DOG_LABEL: [], CAT_LABEL: []}
-    random.shuffle(data[DOG_LABEL])
+    testData = {CAT_LABEL: [], DOG_LABEL: []}
     random.shuffle(data[CAT_LABEL])
+    random.shuffle(data[DOG_LABEL])
     for i in range(NUM_TEST_SAMPLES_PER):
+        testData[CAT_LABEL].append(data[CAT_LABEL].pop(0))
         testData[DOG_LABEL].append(data[DOG_LABEL].pop(0))
-        testData[CAT_LABEL].append(data[DOG_LABEL].pop(0))
 
     # Test
     correctCount = {DOG_LABEL: 0, CAT_LABEL: 0}
-    for dogTest in testData[DOG_LABEL]:
-        print ("dogTest", dogTest)
-        nearestNeighbors = knn(dogTest, data)
-        print ("nearestNeighbors", nearestNeighbors)
-        prediction = max(set(nearestNeighbors), key=nearestNeighbors.count)
-        print ("prediction", prediction)
-        if prediction == DOG_LABEL:
-            correctCount[DOG_LABEL] += 1
-        print ("*"*20)
     for catTest in testData[CAT_LABEL]:
         print ("catTest", catTest)
         nearestNeighbors = knn(catTest, data)
@@ -103,6 +108,15 @@ def main():
         print ("prediction", prediction)
         if prediction == CAT_LABEL:
             correctCount[CAT_LABEL] += 1
+        print ("*"*20)
+    for dogTest in testData[DOG_LABEL]:
+        print ("dogTest", dogTest)
+        nearestNeighbors = knn(dogTest, data)
+        print ("nearestNeighbors", nearestNeighbors)
+        prediction = max(set(nearestNeighbors), key=nearestNeighbors.count)
+        print ("prediction", prediction)
+        if prediction == DOG_LABEL:
+            correctCount[DOG_LABEL] += 1
         print ("*"*20)
 
     # Print results
@@ -131,7 +145,7 @@ def knn(testPoint, data):
                 sortedPairs = sorted(zippedData, reverse=True)
                 tuples = zip(*sortedPairs)
                 nearestDistance, nearestNeighbor = [ list(tuple) for tuple in  tuples]
-                print ("nearestNeighbor", nearestNeighbor, "nearestDistance", nearestDistance, "dataNum", dataNum)
+                ###print ("nearestNeighbor", nearestNeighbor, "nearestDistance", nearestDistance, "dataNum", dataNum)
     return nearestNeighbor
 
 # Calculates distance between tuples
