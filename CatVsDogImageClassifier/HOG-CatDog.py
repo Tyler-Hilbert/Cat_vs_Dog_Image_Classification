@@ -16,6 +16,14 @@ accuracy = 0.58
 
 NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 10000
 accuracy = 0.56
+
+NUM_TEST_SAMPLES_PER = 50, NUM_TRAIN_SAMPLES_PER = 5000
+dogAccuracy 0.8
+catAccuracy 0.54
+
+NUM_TEST_SAMPLES_PER = 50, NUM_TRAIN_SAMPLES_PER = 5000
+dogAccuracy 0.62
+catAccuracy 0.56
 '''
 
 from skimage.feature import hog
@@ -28,7 +36,7 @@ from os.path import isfile, join
 import random
 
 ##################################### Constants
-NUM_TEST_SAMPLES_PER = 25 # Number of test images to set aside for each class
+NUM_TEST_SAMPLES_PER = 50 # Number of test images to set aside for each class
 NUM_TRAIN_SAMPLES_PER = 5000 # Number of training images to read
 DATA_PATH = "data/"
 DOG_LABEL = 'dog' # 0
@@ -84,7 +92,7 @@ for imgFile in imgFiles:
             data[DOG_LABEL].append(getHistogram(getImg(imgFile)))
             dogCount += 1
     else:
-        error ("Not a valid label")
+        print ("warning: Could not load file:", imgFile)
 
 # Split data
 testData = {CAT_LABEL: [], DOG_LABEL: []}
@@ -118,10 +126,17 @@ clf.fit(XTrain, yTrain)
 
 # Test / Print Results
 yPred = clf.predict(XTest)
-correct = 0
+catCorrect = 0
+dogCorrect = 0
 for p, t in zip(yPred, yTest):
     if p == t:
-        correct += 1
+        if p == 0:
+            dogCorrect += 1
+        else:
+            catCorrect += 1
     print ("pred", p, "test", t)
-accuracy = correct / (2*NUM_TEST_SAMPLES_PER)
-print ("accuracy", accuracy)
+
+dogAccuracy = dogCorrect / NUM_TEST_SAMPLES_PER
+catAccuracy = catCorrect / NUM_TEST_SAMPLES_PER
+print ("dogAccuracy", dogAccuracy)
+print ("catAccuracy", catAccuracy)
