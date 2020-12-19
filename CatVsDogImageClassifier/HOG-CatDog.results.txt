@@ -1,3 +1,10 @@
+Conclusion:
+The accuracy of the HOG / SVM algorithm consistently got around a 60% accuracy even with many different hyperparameters and training set sizes.
+It seems like this algorithm is not a feasible approach to classifying the dog/cat dataset.
+
+############################
+Test configurations with accuracies:
+
 fd, hogImage = hog(image, orientations=8, pixels_per_cell=(16, 16),
                     cells_per_block=(1, 1), visualize=True, multichannel=True)
 bin size = 0.1
@@ -136,3 +143,14 @@ bin size = 0.1
     NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
     dogAccuracy 0.64
     catAccuracy 0.44
+
+
+
+** Test With 40,200 Images After I Thought I Found The Optimal Hyperparameters **
+orientations=64
+pixels_per_cell=(32, 32)
+bin size = 0.1
+NUM_TEST_SAMPLES_PER = 100
+NUM_TRAIN_SAMPLES_PER = 20000
+dogAccuracy 0.58
+catAccuracy 0.46
