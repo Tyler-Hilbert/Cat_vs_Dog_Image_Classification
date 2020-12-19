@@ -1,0 +1,138 @@
+fd, hogImage = hog(image, orientations=8, pixels_per_cell=(16, 16),
+                    cells_per_block=(1, 1), visualize=True, multichannel=True)
+bin size = 0.1
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 100
+    accuracy = 0.56
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    accuracy = 0.68
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    accuracy = 0.58
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 10000
+    accuracy = 0.56
+
+    NUM_TEST_SAMPLES_PER = 50, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.8
+    catAccuracy 0.54
+
+    NUM_TEST_SAMPLES_PER = 50, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.62
+    catAccuracy 0.56
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.68
+    catAccuracy 0.6
+
+
+
+fd, hogImage = hog(image, orientations=8, pixels_per_cell=(16, 16),
+                    cells_per_block=(1, 1), visualize=True, multichannel=True)
+bin size = 0.01
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    dogAccuracy 0.36
+    catAccuracy 0.68
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.4
+    catAccuracy 0.8
+
+
+
+fd, hogImage = hog(image, orientations=8, pixels_per_cell=(64, 64),
+                    cells_per_block=(1, 1), visualize=True, multichannel=True)
+bin size = 0.1
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    dogAccuracy 0.8
+    catAccuracy 0.28
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.8
+    catAccuracy 0.4
+
+
+
+fd, hogImage = hog(image, orientations=8, pixels_per_cell=(8, 8),
+                    cells_per_block=(1, 1)
+bin size = 0.1
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    dogAccuracy 0.64
+    catAccuracy 0.44
+
+
+
+fd, hogImage = hog(image, orientations=16, pixels_per_cell=(16, 16),
+                    cells_per_block=(1, 1), visualize=True, multichannel=True)
+bin size = 0.1
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    dogAccuracy 0.68
+    catAccuracy 0.36
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.92
+    catAccuracy 0.44
+
+
+
+fd, hogImage = hog(image, orientations=32, pixels_per_cell=(16, 16),
+                    cells_per_block=(1, 1), visualize=True, multichannel=True)
+bin size = 0.1
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    dogAccuracy 0.8
+    catAccuracy 0.32
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.84
+    catAccuracy 0.44
+
+
+
+fd, hogImage = hog(image, orientations=64, pixels_per_cell=(16, 16),
+                      cells_per_block=(1, 1), visualize=True, multichannel=True)
+bin size = 0.1
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    dogAccuracy 0.64
+    catAccuracy 0.72
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.52
+    catAccuracy 0.6
+
+
+
+fd, hogImage = hog(image, orientations=64, pixels_per_cell=(32, 32),
+                    cells_per_block=(1, 1), visualize=True, multichannel=True)
+bin size = 0.1
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    dogAccuracy 0.72
+    catAccuracy 0.56
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.76
+    catAccuracy 0.72
+
+
+
+fd, hogImage = hog(image, orientations=128, pixels_per_cell=(64, 64),
+                    cells_per_block=(1, 1), visualize=True, multichannel=True)
+bin size = 0.01
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    dogAccuracy 0.68
+    catAccuracy 0.52
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.8
+    catAccuracy 0.56
+
+
+fd, hogImage = hog(image, orientations=128, pixels_per_cell=(64, 64),
+                    cells_per_block=(1, 1), visualize=True, multichannel=True)
+bin size = 0.1
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
+    dogAccuracy 0.32
+    catAccuracy 0.76
+
+    NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
+    dogAccuracy 0.64
+    catAccuracy 0.44

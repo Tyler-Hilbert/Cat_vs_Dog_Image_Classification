@@ -3,28 +3,8 @@
 # HOG reference - https://scikit-image.org/docs/dev/auto_examples/features_detection/plot_hog.html
 # SVM reference - https://www.datacamp.com/community/tutorials/svm-classification-scikit-learn-python
 
-'''
-Results:
-NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 100
-accuracy = 0.56
-
-NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 1000
-accuracy = 0.68
-
-NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 5000
-accuracy = 0.58
-
-NUM_TEST_SAMPLES_PER = 25, NUM_TRAIN_SAMPLES_PER = 10000
-accuracy = 0.56
-
-NUM_TEST_SAMPLES_PER = 50, NUM_TRAIN_SAMPLES_PER = 5000
-dogAccuracy 0.8
-catAccuracy 0.54
-
-NUM_TEST_SAMPLES_PER = 50, NUM_TRAIN_SAMPLES_PER = 5000
-dogAccuracy 0.62
-catAccuracy 0.56
-'''
+# Results in HOG-CatDog.results.txt
+# Various parameters were played with, but on average it got around a 60% accuracy, with a slightly higher accuracy for dog than cat.
 
 from skimage.feature import hog
 from skimage import data, exposure
@@ -45,22 +25,20 @@ CAT_LABEL = 'cat' # 1
 
 ##################################### Functions
 # Performs HOG
+#  Return None if HOG can't be created
 def getHistogram(image):
-    fd, hogImage = hog(image, orientations=8, pixels_per_cell=(16, 16),
-                        cells_per_block=(1, 1), visualize=True, multichannel=True)
+    fd, hogImage = hog(image, orientations=64, pixels_per_cell=(32, 32),
+            cells_per_block=(1, 1), visualize=True, multichannel=True)
+
+    if fd.size == 0:
+        return None
+
     fd = fd.round(1)
     hist = []
-    hist.append(np.count_nonzero(fd == 0)/fd.size)
-    hist.append(np.count_nonzero(fd == 0.1)/fd.size)
-    hist.append(np.count_nonzero(fd == 0.2)/fd.size)
-    hist.append(np.count_nonzero(fd == 0.3)/fd.size)
-    hist.append(np.count_nonzero(fd == 0.4)/fd.size)
-    hist.append(np.count_nonzero(fd == 0.5)/fd.size)
-    hist.append(np.count_nonzero(fd == 0.6)/fd.size)
-    hist.append(np.count_nonzero(fd == 0.7)/fd.size)
-    hist.append(np.count_nonzero(fd == 0.8)/fd.size)
-    hist.append(np.count_nonzero(fd == 0.9)/fd.size)
-    hist.append(np.count_nonzero(fd == 1)/fd.size)
+
+    # Put into bins incremented from 0 to 1 inclusively
+    for i in np.arange(0, 1.1, 0.1).round(1).tolist():
+        hist.append(np.count_nonzero(fd == i)/fd.size)
     return np.array(hist)
 
 
@@ -82,15 +60,24 @@ data = {DOG_LABEL: [], CAT_LABEL: []}
 imgFiles = [f for f in listdir(DATA_PATH) if isfile(join(DATA_PATH, f))]
 for imgFile in imgFiles:
     print ("dogCount", dogCount, "catCount", catCount)
+    print ("imgFile", imgFile)
     imgFile = DATA_PATH + imgFile
     if CAT_LABEL in imgFile:
         if catCount < (NUM_TEST_SAMPLES_PER + NUM_TRAIN_SAMPLES_PER):
-            data[CAT_LABEL].append(getHistogram(getImg(imgFile)))
-            catCount += 1
+            parsedHistogram = getHistogram(getImg(imgFile))
+            if parsedHistogram is None:
+                continue
+            else:
+                data[CAT_LABEL].append(parsedHistogram)
+                catCount += 1
     elif DOG_LABEL in imgFile:
         if dogCount < (NUM_TEST_SAMPLES_PER + NUM_TRAIN_SAMPLES_PER):
-            data[DOG_LABEL].append(getHistogram(getImg(imgFile)))
-            dogCount += 1
+            parsedHistogram = getHistogram(getImg(imgFile))
+            if parsedHistogram is None:
+                continue
+            else:
+                data[DOG_LABEL].append(parsedHistogram)
+                dogCount += 1
     else:
         print ("warning: Could not load file:", imgFile)
 
