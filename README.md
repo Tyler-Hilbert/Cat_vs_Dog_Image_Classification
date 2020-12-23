@@ -39,7 +39,11 @@ CNN written using Pytorch.
 A model with an accuracy of 81% was created using 3 convolutional layers, with pooling, batch normalization and a relu activation function.  
 I believe that this accuracy can be increased if the hyperparameters are adjusted.  
 ### CNN Setup Instructions
-[put the train data set from this link - https://www.kaggle.com/c/dogs-vs-cats/data - into the following directories dataYouTubeFormat/train/cat dataYouTubeFormat/train/dog dataYouTubeFormat/test/cat dataYouTubeFormat/test/dog](https://www.kaggle.com/c/dogs-vs-cats/data)  
+[put the train data set from this link - https://www.kaggle.com/c/dogs-vs-cats/data - ](https://www.kaggle.com/c/dogs-vs-cats/data) into the following directories:  
+dataYouTubeFormat/train/cat  
+dataYouTubeFormat/train/dog  
+dataYouTubeFormat/test/cat  
+dataYouTubeFormat/test/dog  
 Some hyperparameters can be set under `Constants` in CNN_CatVsDog.py, while others will need to be set in the `ConvNN` class or in the following lines of code:  
 ```
 transformer = transforms.Compose([
