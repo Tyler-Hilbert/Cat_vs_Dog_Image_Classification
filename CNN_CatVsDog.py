@@ -96,6 +96,7 @@ model = ConvNN(num_classes=6).to(device)
 optimizer = Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY)
 lossFunction = nn.CrossEntropyLoss()
 
+print (model.__dict__)
 
 bestAccuracy = 0
 for epoch in range(NUM_EPOCHS):
