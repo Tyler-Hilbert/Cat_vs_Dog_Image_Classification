@@ -1,3 +1,7 @@
+# CNN for classifying image as dog or cat
+# Data - https://www.kaggle.com/c/dogs-vs-cats/data
+# Results - 81% accuracy
+
 import os
 import numpy as np
 import torch
@@ -11,10 +15,10 @@ import torchvision
 import pathlib
 
 ########## Constants
-TRAIN_PATH = "dataYouTubeFormatSubset/train"
-TEST_PATH = "dataYouTubeFormatSubset/test"
+TRAIN_PATH = "dataYouTubeFormat/train"
+TEST_PATH = "dataYouTubeFormat/test"
 BATCH_SIZE = 256
-NUM_EPOCHS = 10
+NUM_EPOCHS = 30
 LEARNING_RATE = 0.001
 WEIGHT_DECAY = 0.0001
 
@@ -131,7 +135,7 @@ for epoch in range(NUM_EPOCHS):
         _,prediction = torch.max(outputs.data, 1)
         testAccuracy += int(torch.sum(prediction==labels.data))
 
-    testAccuracy = testAccuracy / trainCount
+    testAccuracy = testAccuracy / testCount
 
     print ("epoch", epoch, "testAccuracy", testAccuracy, "trainAccuracy", trainAccuracy)
 

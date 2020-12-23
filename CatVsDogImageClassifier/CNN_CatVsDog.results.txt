@@ -1,0 +1,50 @@
+//////////////////// Small Test //////////////////////
+cpu
+['cat', 'dog']
+trainCount 2000 testCount 200
+epoch 0 testAccuracy 0.051 trainAccuracy 0.479
+epoch 1 testAccuracy 0.0505 trainAccuracy 0.5355
+epoch 2 testAccuracy 0.052 trainAccuracy 0.5445
+epoch 3 testAccuracy 0.0575 trainAccuracy 0.608
+epoch 4 testAccuracy 0.0625 trainAccuracy 0.6645
+epoch 5 testAccuracy 0.0645 trainAccuracy 0.6865
+epoch 6 testAccuracy 0.054 trainAccuracy 0.708
+epoch 7 testAccuracy 0.0655 trainAccuracy 0.773
+epoch 8 testAccuracy 0.063 trainAccuracy 0.791
+epoch 9 testAccuracy 0.06 trainAccuracy 0.8355
+
+
+//////////////////// Full Dataset //////////////////////
+cpu
+['cat', 'dog']
+trainCount 24798 testCount 200
+epoch 0 testAccuracy 0.58 trainAccuracy 0.6103314783450279
+epoch 1 testAccuracy 0.73 trainAccuracy 0.6866279538672474
+epoch 2 testAccuracy 0.77 trainAccuracy 0.7725623034115654
+epoch 3 testAccuracy 0.76 trainAccuracy 0.7566739253165577
+epoch 4 testAccuracy 0.76 trainAccuracy 0.826881200096782
+epoch 5 testAccuracy 0.805 trainAccuracy 0.8195822243729333
+epoch 6 testAccuracy 0.79 trainAccuracy 0.8255907734494717
+epoch 7 testAccuracy 0.74 trainAccuracy 0.8715218969271715
+epoch 8 testAccuracy 0.705 trainAccuracy 0.8412775223808372
+epoch 9 testAccuracy 0.79 trainAccuracy 0.848052262279216
+epoch 10 testAccuracy 0.815 trainAccuracy 0.8543430921848536
+epoch 11 testAccuracy 0.795 trainAccuracy 0.9013630131462215
+epoch 12 testAccuracy 0.76 trainAccuracy 0.8974514073715623
+epoch 13 testAccuracy 0.78 trainAccuracy 0.9179369303976127
+epoch 14 testAccuracy 0.815 trainAccuracy 0.8966045648842649
+epoch 15 testAccuracy 0.795 trainAccuracy 0.900233889829825
+epoch 16 testAccuracy 0.77 trainAccuracy 0.9371320267763529
+epoch 17 testAccuracy 0.795 trainAccuracy 0.9495120574239858
+epoch 18 testAccuracy 0.835 trainAccuracy 0.9380191950963788
+epoch 19 testAccuracy 0.815 trainAccuracy 0.9565690781514639
+epoch 20 testAccuracy 0.79 trainAccuracy 0.9517299782240504
+epoch 21 testAccuracy 0.685 trainAccuracy 0.9407210258891846
+epoch 22 testAccuracy 0.805 trainAccuracy 0.9348334543108315
+epoch 23 testAccuracy 0.765 trainAccuracy 0.963101863053472
+epoch 24 testAccuracy 0.79 trainAccuracy 0.9649165255262521
+epoch 25 testAccuracy 0.8 trainAccuracy 0.9692313896281958
+epoch 26 testAccuracy 0.825 trainAccuracy 0.9762077586902169
+epoch 27 testAccuracy 0.775 trainAccuracy 0.9706831196064198
+epoch 28 testAccuracy 0.805 trainAccuracy 0.9178159528994274
+epoch 29 testAccuracy 0.81 trainAccuracy 0.9761674328574885
