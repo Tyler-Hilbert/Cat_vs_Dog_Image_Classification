@@ -2,19 +2,29 @@
 Compares the accuracy of KNN, HOG/SVM and CNN for classifying an image as cat or dog.  
 
 # Conclusion  
-A CNN is the best approach to this dataset with an 80%+ accuracy (that I believe can be increased with better hyperparameters).  
+A CNN is the best approach to this dataset with an 89.5%+ accuracy.  
 Neither the KNN or HOG/SVM performed well enough to be considered useable for this dataset as they barely did better than a random guess.  
 
-# Analysis of Each Algorithm (worst to best)
-## KNN (k-nearest neighbors)
-KNN written from scratch using Python3.  
-### KNN Results
-The accuracy was around 50%-60%.  
-KNN was tested for k = 3, 7, 11, 23, 45, 101, 201 and 301.  
-### KNN Setup Instructions
-[put the train data set from this link - https://www.kaggle.com/c/dogs-vs-cats/data - into the directory data/](https://www.kaggle.com/c/dogs-vs-cats/data)  
-Hyperparameters can be set under `Constants` in knn_catVsDog.py  
-
+# Analysis of Each Algorithm (best to worst)
+## CNN (Convolutional Neural Network)
+CNN written using Pytorch.   
+### CNN Results
+A model with an accuracy of 89.5% was created using 11 convolutional layers, relu activation functions, batch normalzation between each convoltuion and one max pooling layer.  
+### CNN Setup Instructions
+[put the train data set from this link - https://www.kaggle.com/c/dogs-vs-cats/data - ](https://www.kaggle.com/c/dogs-vs-cats/data) into the following directories:  
+dataYouTubeFormat/train/cat  
+dataYouTubeFormat/train/dog  
+dataYouTubeFormat/test/cat  
+dataYouTubeFormat/test/dog  
+Some hyperparameters can be set under `Constants` in CNN_CatVsDog.py, while others will need to be set in the `ConvNN` class or in the following lines of code:  
+```
+transformer = transforms.Compose([
+    transforms.Resize( (150,150) ), # Is this the correct size?
+    transforms.RandomHorizontalFlip(),
+    transforms.ToTensor(),
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+])
+```
 
 ## HOG / SVM (Histogram of Oriented Gradients / Linear SVM)  
 HOG / SVM written using scikit-learn.  
@@ -32,24 +42,11 @@ for i in np.arange(0, 1.1, 0.1).round(1).tolist():
 Hyperparameters for the HOG need to be set in the following line of code within HOG-CatDog.py:  
 `fd, hogImage = hog(image, orientations=64, pixels_per_cell=(32, 32), cells_per_block=(1, 1), visualize=True, multichannel=True)`
 
-
-## CNN (Convolutional Neural Network)
-CNN written using Pytorch.   
-### CNN Results
-A model with an accuracy of 81% was created using 3 convolutional layers, with pooling, batch normalization and a relu activation function.  
-I believe that this accuracy can be increased if the hyperparameters are adjusted.  
-### CNN Setup Instructions
-[put the train data set from this link - https://www.kaggle.com/c/dogs-vs-cats/data - ](https://www.kaggle.com/c/dogs-vs-cats/data) into the following directories:  
-dataYouTubeFormat/train/cat  
-dataYouTubeFormat/train/dog  
-dataYouTubeFormat/test/cat  
-dataYouTubeFormat/test/dog  
-Some hyperparameters can be set under `Constants` in CNN_CatVsDog.py, while others will need to be set in the `ConvNN` class or in the following lines of code:  
-```
-transformer = transforms.Compose([
-    transforms.Resize( (150,150) ), # Is this the correct size?
-    transforms.RandomHorizontalFlip(),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-])
-```
+## KNN (k-nearest neighbors)
+KNN written from scratch using Python3.  
+### KNN Results
+The accuracy was around 50%-60%.  
+KNN was tested for k = 3, 7, 11, 23, 45, 101, 201 and 301.  
+### KNN Setup Instructions
+[put the train data set from this link - https://www.kaggle.com/c/dogs-vs-cats/data - into the directory data/](https://www.kaggle.com/c/dogs-vs-cats/data)  
+Hyperparameters can be set under `Constants` in knn_catVsDog.py  
