@@ -2,7 +2,7 @@
 Compares the accuracy of KNN, HOG/SVM and CNN for classifying an image as cat or dog.  
 
 # Conclusion  
-A CNN is the best approach to this dataset with an 89.5%+ accuracy.  
+A CNN is the best approach to this dataset with an 89.5% accuracy.  
 Neither the KNN or HOG/SVM performed well enough to be considered useable for this dataset as they barely did better than a random guess.  
 
 # Analysis of Each Algorithm (best to worst)
