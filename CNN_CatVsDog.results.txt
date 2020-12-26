@@ -14,7 +14,8 @@ epoch 8 testAccuracy 0.063 trainAccuracy 0.791
 epoch 9 testAccuracy 0.06 trainAccuracy 0.8355
 
 
-//////////////////// Full Dataset //////////////////////
+
+//////////////////// Full Dataset (model a) //////////////////////
 cpu
 ['cat', 'dog']
 trainCount 24798 testCount 200
@@ -51,3 +52,116 @@ epoch 26 testAccuracy 0.825 trainAccuracy 0.9762077586902169
 epoch 27 testAccuracy 0.775 trainAccuracy 0.9706831196064198
 epoch 28 testAccuracy 0.805 trainAccuracy 0.9178159528994274
 epoch 29 testAccuracy 0.81 trainAccuracy 0.9761674328574885
+
+
+
+//////////////////// More Features (model b) //////////////////////
+cpu
+['cat', 'dog']
+trainCount 24798 testCount 200
+{'training': True, '_parameters': OrderedDict(), '_buffers': OrderedDict(), '_non_persistent_buffers_set': set(), '_backward_hooks': OrderedDict(), '_forward_hooks': OrderedDict(), '_forward_pre_hooks': OrderedDict(), '_state_dict_hooks': OrderedDict(), '_load_state_dict_pre_hooks': OrderedDict(), '_modules': OrderedDict([('conv1', Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn1', BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu1', ReLU()), ('pool', MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)), ('conv2', Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('relu2', ReLU()), ('conv3', Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn3', BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu3', ReLU()), ('fc', Linear(in_features=720000, out_features=6, bias=True))])}
+epoch 0 testAccuracy 0.735 trainAccuracy 0.6133962416323897
+epoch 1 testAccuracy 0.755 trainAccuracy 0.6661424308411968
+epoch 2 testAccuracy 0.795 trainAccuracy 0.753165577869183
+epoch 3 testAccuracy 0.555 trainAccuracy 0.7703040567787725
+epoch 4 testAccuracy 0.7 trainAccuracy 0.76881200096782
+epoch 5 testAccuracy 0.74 trainAccuracy 0.7573191386402129
+epoch 6 testAccuracy 0.76 trainAccuracy 0.7405839180579079
+epoch 7 testAccuracy 0.805 trainAccuracy 0.7926445681103315
+epoch 8 testAccuracy 0.79 trainAccuracy 0.7294136623921283
+epoch 9 testAccuracy 0.805 trainAccuracy 0.816396483587386
+epoch 10 testAccuracy 0.835 trainAccuracy 0.840995241551738
+epoch 11 testAccuracy 0.765 trainAccuracy 0.8541414630212114
+epoch 12 testAccuracy 0.835 trainAccuracy 0.868578111137995
+epoch 13 testAccuracy 0.805 trainAccuracy 0.8790225018146625
+epoch 14 testAccuracy 0.87 trainAccuracy 0.9014436648116784
+epoch 15 testAccuracy 0.82 trainAccuracy 0.9060811355754497
+epoch 16 testAccuracy 0.79 trainAccuracy 0.9201951770304057
+epoch 17 testAccuracy 0.815 trainAccuracy 0.8826115009274942
+epoch 18 testAccuracy 0.81 trainAccuracy 0.9274538269215259
+epoch 19 testAccuracy 0.83 trainAccuracy 0.9135817404629406
+epoch 20 testAccuracy 0.81 trainAccuracy 0.9464069683038955
+epoch 21 testAccuracy 0.73 trainAccuracy 0.9404790708928139
+epoch 22 testAccuracy 0.83 trainAccuracy 0.9445923058311154
+epoch 23 testAccuracy 0.83 trainAccuracy 0.9657230421808211
+epoch 24 testAccuracy 0.81 trainAccuracy 0.97015888378095
+epoch 25 testAccuracy 0.825 trainAccuracy 0.9639487055407694
+epoch 26 testAccuracy 0.815 trainAccuracy 0.9644729413662392
+epoch 27 testAccuracy 0.855 trainAccuracy 0.9738688603919671
+epoch 28 testAccuracy 0.805 trainAccuracy 0.9402774417291717
+epoch 29 testAccuracy 0.81 trainAccuracy 0.9778611178320832
+
+
+
+//////////////////// 6 Conv Layers (model c) //////////////////////
+cpu
+['cat', 'dog']
+trainCount 24798 testCount 200
+{'training': True, '_parameters': OrderedDict(), '_buffers': OrderedDict(), '_non_persistent_buffers_set': set(), '_backward_hooks': OrderedDict(), '_forward_hooks': OrderedDict(), '_forward_pre_hooks': OrderedDict(), '_state_dict_hooks': OrderedDict(), '_load_state_dict_pre_hooks': OrderedDict(), '_modules': OrderedDict([('conv1', Conv2d(3, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn1', BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu1', ReLU()), ('pool', MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)), ('conv2', Conv2d(12, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('relu2', ReLU()), ('conv3', Conv2d(24, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn3', BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu3', ReLU()), ('conv4', Conv2d(32, 40, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn4', BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu4', ReLU()), ('conv5', Conv2d(40, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn5', BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu5', ReLU()), ('conv6', Conv2d(48, 56, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn6', BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu6', ReLU()), ('fc', Linear(in_features=315000, out_features=6, bias=True))])}
+epoch 0 testAccuracy 0.665 trainAccuracy 0.5875473828534559
+epoch 1 testAccuracy 0.805 trainAccuracy 0.6983224453584966
+epoch 2 testAccuracy 0.685 trainAccuracy 0.7601822727639326
+epoch 3 testAccuracy 0.825 trainAccuracy 0.7966368255504476
+epoch 4 testAccuracy 0.82 trainAccuracy 0.815670618598274
+epoch 5 testAccuracy 0.815 trainAccuracy 0.8117590128236148
+epoch 6 testAccuracy 0.85 trainAccuracy 0.8495443180901686
+epoch 7 testAccuracy 0.835 trainAccuracy 0.8584966529558835
+epoch 8 testAccuracy 0.835 trainAccuracy 0.8574078554722155
+epoch 9 testAccuracy 0.855 trainAccuracy 0.8618436970723445
+epoch 10 testAccuracy 0.825 trainAccuracy 0.8822082426002097
+epoch 11 testAccuracy 0.835 trainAccuracy 0.8805548834583434
+epoch 12 testAccuracy 0.87 trainAccuracy 0.8916848132913945
+epoch 13 testAccuracy 0.895 trainAccuracy 0.8975723848697476
+epoch 14 testAccuracy 0.86 trainAccuracy 0.902774417291717
+epoch 15 testAccuracy 0.85 trainAccuracy 0.8982175981934027
+epoch 16 testAccuracy 0.86 trainAccuracy 0.9121300104847165
+epoch 17 testAccuracy 0.89 trainAccuracy 0.9117670779901605
+epoch 18 testAccuracy 0.895 trainAccuracy 0.9264053552705863
+epoch 19 testAccuracy 0.88 trainAccuracy 0.931889668521655
+epoch 20 testAccuracy 0.865 trainAccuracy 0.9251552544560045
+epoch 21 testAccuracy 0.87 trainAccuracy 0.9382611500927495
+epoch 22 testAccuracy 0.855 trainAccuracy 0.9462053391402533
+epoch 23 testAccuracy 0.895 trainAccuracy 0.9485845632712315
+epoch 24 testAccuracy 0.855 trainAccuracy 0.9484232599403177
+epoch 25 testAccuracy 0.845 trainAccuracy 0.9535446406968304
+epoch 26 testAccuracy 0.87 trainAccuracy 0.9579804822969594
+epoch 27 testAccuracy 0.855 trainAccuracy 0.9649165255262521
+epoch 28 testAccuracy 0.885 trainAccuracy 0.9652794580208082
+epoch 29 testAccuracy 0.83 trainAccuracy 0.9659649971771918
+
+
+//////////////////// 11 Conv Layers (model d) //////////////////////
+cpu
+['cat', 'dog']
+trainCount 24798 testCount 200
+{'training': True, '_parameters': OrderedDict(), '_buffers': OrderedDict(), '_non_persistent_buffers_set': set(), '_backward_hooks': OrderedDict(), '_forward_hooks': OrderedDict(), '_forward_pre_hooks': OrderedDict(), '_state_dict_hooks': OrderedDict(), '_load_state_dict_pre_hooks': OrderedDict(), '_modules': OrderedDict([('conv1', Conv2d(3, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn1', BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu1', ReLU()), ('pool', MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)), ('conv2', Conv2d(12, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn2', BatchNorm2d(20, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu2', ReLU()), ('conv3', Conv2d(20, 28, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn3', BatchNorm2d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu3', ReLU()), ('conv4', Conv2d(28, 36, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn4', BatchNorm2d(36, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu4', ReLU()), ('conv5', Conv2d(36, 42, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn5', BatchNorm2d(42, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu5', ReLU()), ('conv6', Conv2d(42, 50, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn6', BatchNorm2d(50, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu6', ReLU()), ('conv7', Conv2d(50, 58, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn7', BatchNorm2d(58, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu7', ReLU()), ('conv8', Conv2d(58, 66, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn8', BatchNorm2d(66, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu8', ReLU()), ('conv9', Conv2d(66, 74, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn9', BatchNorm2d(74, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu9', ReLU()), ('conv10', Conv2d(74, 82, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn10', BatchNorm2d(82, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu10', ReLU()), ('conv11', Conv2d(82, 90, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))), ('bn11', BatchNorm2d(90, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)), ('relu11', ReLU()), ('fc', Linear(in_features=506250, out_features=6, bias=True))])}
+epoch 0 testAccuracy 0.635 trainAccuracy 0.5589160416162594
+epoch 1 testAccuracy 0.685 trainAccuracy 0.6181143640616179
+epoch 2 testAccuracy 0.69 trainAccuracy 0.6831196064198726
+epoch 3 testAccuracy 0.72 trainAccuracy 0.7048552302605049
+epoch 4 testAccuracy 0.755 trainAccuracy 0.733083313170417
+epoch 5 testAccuracy 0.76 trainAccuracy 0.7551818695056053
+epoch 6 testAccuracy 0.82 trainAccuracy 0.7751431567061859
+epoch 7 testAccuracy 0.805 trainAccuracy 0.8070005645616583
+epoch 8 testAccuracy 0.845 trainAccuracy 0.8115573836599725
+epoch 9 testAccuracy 0.79 trainAccuracy 0.8335349624969756
+epoch 10 testAccuracy 0.83 trainAccuracy 0.8385353657553029
+epoch 11 testAccuracy 0.825 trainAccuracy 0.8471650939591903
+epoch 12 testAccuracy 0.86 trainAccuracy 0.8601096862650214
+epoch 13 testAccuracy 0.8 trainAccuracy 0.8661585611742882
+epoch 14 testAccuracy 0.86 trainAccuracy 0.8491813855956125
+epoch 15 testAccuracy 0.75 trainAccuracy 0.875998064360029
+epoch 16 testAccuracy 0.88 trainAccuracy 0.8824905234293088
+epoch 17 testAccuracy 0.875 trainAccuracy 0.8899104766513428
+epoch 18 testAccuracy 0.875 trainAccuracy 0.8683361561416243
+epoch 19 testAccuracy 0.82 trainAccuracy 0.885676264214856
+epoch 20 testAccuracy 0.87 trainAccuracy 0.8993467215097992
+epoch 21 testAccuracy 0.895 trainAccuracy 0.9068473263972902
+epoch 22 testAccuracy 0.905 trainAccuracy 0.9079361238809581
+epoch 23 testAccuracy 0.885 trainAccuracy 0.9126542463101863
+epoch 24 testAccuracy 0.78 trainAccuracy 0.9217275586740866
+epoch 25 testAccuracy 0.91 trainAccuracy 0.9245906927978063
+epoch 26 testAccuracy 0.9 trainAccuracy 0.9234615694814098
+epoch 27 testAccuracy 0.92 trainAccuracy 0.9255585127832889
+epoch 28 testAccuracy 0.855 trainAccuracy 0.9320106460198403
+epoch 29 testAccuracy 0.895 trainAccuracy 0.9285022985724655
