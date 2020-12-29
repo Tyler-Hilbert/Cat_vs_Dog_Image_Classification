@@ -2,14 +2,19 @@
 Compares the accuracy of KNN, HOG/SVM and CNN for classifying an image as cat or dog.  
 
 # Conclusion  
-A CNN is the best approach to this dataset with an 89.5% accuracy.  
+A CNN is the best approach to this dataset with a 91% accuracy.  
 Neither the KNN or HOG/SVM performed well enough to be considered useable for this dataset as they barely did better than a random guess.  
 
 # Analysis of Each Algorithm (best to worst)
 ## CNN (Convolutional Neural Network)
 CNN written using Pytorch.   
 ### CNN Results
-A model with an accuracy of 89.5% was created using 11 convolutional layers, relu activation functions, batch normalzation between each convoltuion and one max pooling layer.  
+AlexNet: 91%  
+11 Convolutional Layers + ReLU + Batch Normalization: 89.5%  
+6 Convolutional Layers + ReLU + Batch Normalization: 83%  
+3 Convolutional Layers + ReLU + Batch Normalization: 81%  
+
+
 ### CNN Setup Instructions
 [put the train data set from this link - https://www.kaggle.com/c/dogs-vs-cats/data - ](https://www.kaggle.com/c/dogs-vs-cats/data) into the following directories:  
 dataYouTubeFormat/train/cat  

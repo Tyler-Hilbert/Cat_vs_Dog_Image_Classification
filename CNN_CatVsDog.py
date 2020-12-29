@@ -1,6 +1,6 @@
 # CNN for classifying image as dog or cat
 # Data - https://www.kaggle.com/c/dogs-vs-cats/data
-# Results - 89.5%
+# Results - 91% (AlexNet)
 
 import os
 import numpy as np
@@ -19,104 +19,47 @@ TRAIN_PATH = "dataYouTubeFormat/train"
 TEST_PATH = "dataYouTubeFormat/test"
 BATCH_SIZE = 256
 NUM_EPOCHS = 30
-LEARNING_RATE = 0.001
+LEARNING_RATE = 0.0001
 WEIGHT_DECAY = 0.001
 
 
 
 ########## Neural Network
 class ConvNN(nn.Module):
-    def __init__(self, num_classes=6):
+    def __init__(self, num_classes: int = 1000) -> None:
         super(ConvNN, self).__init__()
+        self.features = nn.Sequential(
+            nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=2),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=3, stride=2),
+            nn.Conv2d(64, 192, kernel_size=5, padding=2),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=3, stride=2),
+            nn.Conv2d(192, 384, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(384, 256, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(256, 256, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=3, stride=2),
+        )
+        self.avgpool = nn.AdaptiveAvgPool2d((6, 6))
+        self.classifier = nn.Sequential(
+            nn.Dropout(),
+            nn.Linear(256 * 6 * 6, 4096),
+            nn.ReLU(inplace=True),
+            nn.Dropout(),
+            nn.Linear(4096, 4096),
+            nn.ReLU(inplace=True),
+            nn.Linear(4096, num_classes),
+        )
 
-
-        # ((w - f + 2p) / s) + 1
-        #   w = height or width
-        #   f = kernel size
-        #   p = padding
-        #   s = stride
-
-        # Shape: (batch size, number of channels, image height, image width)
-        # Shape: (256, 3, 150, 150)
-
-        self.conv1 = nn.Conv2d(in_channels=3, out_channels=12, kernel_size=3, stride=1, padding=1)
-        self.bn1 = nn.BatchNorm2d(num_features=12)
-        self.relu1 = nn.ReLU()
-        self.pool = nn.MaxPool2d(kernel_size=2)
-        self.conv2 = nn.Conv2d(in_channels=12, out_channels=20, kernel_size=3, stride=1, padding=1)
-        self.bn2 = nn.BatchNorm2d(num_features=20)
-        self.relu2 = nn.ReLU()
-        self.conv3 = nn.Conv2d(in_channels=20, out_channels=28, kernel_size=3, stride=1, padding=1)
-        self.bn3 = nn.BatchNorm2d(num_features=28)
-        self.relu3 = nn.ReLU()
-        self.conv4 = nn.Conv2d(in_channels=28, out_channels=36, kernel_size=3, stride=1, padding=1)
-        self.bn4 = nn.BatchNorm2d(num_features=36)
-        self.relu4 = nn.ReLU()
-        self.conv5 = nn.Conv2d(in_channels=36, out_channels=42, kernel_size=3, stride=1, padding=1)
-        self.bn5 = nn.BatchNorm2d(num_features=42)
-        self.relu5 = nn.ReLU()
-        self.conv6 = nn.Conv2d(in_channels=42, out_channels=50, kernel_size=3, stride=1, padding=1)
-        self.bn6 = nn.BatchNorm2d(num_features=50)
-        self.relu6 = nn.ReLU()
-        self.conv7 = nn.Conv2d(in_channels=50, out_channels=58, kernel_size=3, stride=1, padding=1)
-        self.bn7 = nn.BatchNorm2d(num_features=58)
-        self.relu7 = nn.ReLU()
-        self.conv8 = nn.Conv2d(in_channels=58, out_channels=66, kernel_size=3, stride=1, padding=1)
-        self.bn8 = nn.BatchNorm2d(num_features=66)
-        self.relu8 = nn.ReLU()
-        self.conv9 = nn.Conv2d(in_channels=66, out_channels=74, kernel_size=3, stride=1, padding=1)
-        self.bn9 = nn.BatchNorm2d(num_features=74)
-        self.relu9 = nn.ReLU()
-        self.conv10 = nn.Conv2d(in_channels=74, out_channels=82, kernel_size=3, stride=1, padding=1)
-        self.bn10 = nn.BatchNorm2d(num_features=82)
-        self.relu10 = nn.ReLU()
-        self.conv11 = nn.Conv2d(in_channels=82, out_channels=90, kernel_size=3, stride=1, padding=1)
-        self.bn11 = nn.BatchNorm2d(num_features=90)
-        self.relu11 = nn.ReLU()
-
-        self.fc = nn.Linear(in_features=90*75*75, out_features=num_classes)
-
-    def forward(self, input):
-        output = self.conv1(input)
-        output = self.bn1(output)
-        output = self.relu1(output)
-        output = self.pool(output)
-        output = self.conv2(output)
-        output = self.bn2(output)
-        output = self.relu2(output)
-        output = self.conv3(output)
-        output = self.bn3(output)
-        output = self.relu3(output)
-        output = self.conv4(output)
-        output = self.bn4(output)
-        output = self.relu4(output)
-        output = self.conv5(output)
-        output = self.bn5(output)
-        output = self.relu5(output)
-        output = self.conv6(output)
-        output = self.bn6(output)
-        output = self.relu6(output)
-        output = self.conv7(output)
-        output = self.bn7(output)
-        output = self.relu7(output)
-        output = self.conv8(output)
-        output = self.bn8(output)
-        output = self.relu8(output)
-        output = self.conv9(output)
-        output = self.bn9(output)
-        output = self.relu9(output)
-        output = self.conv10(output)
-        output = self.bn10(output)
-        output = self.relu10(output)
-        output = self.conv11(output)
-        output = self.bn11(output)
-        output = self.relu11(output)
-
-        output = output.view(-1, 90*75*75)
-
-        output = self.fc(output)
-
-        return output
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = self.features(x)
+        x = self.avgpool(x)
+        x = torch.flatten(x, 1)
+        x = self.classifier(x)
+        return x
 
 ########## Script
 device = torch.device ('cuda' if torch.cuda.is_available() else 'cpu')
