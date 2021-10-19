@@ -14,6 +14,7 @@ AlexNet: 91%
 6 Convolutional Layers + ReLU + Batch Normalization: 83%  
 3 Convolutional Layers + ReLU + Batch Normalization: 81%  
 
+![CNN Training Graph](https://raw.githubusercontent.com/Tyler-Hilbert/Cat_vs_Dog_Image_Classification/main/CNN_Training_Accuracy_Plot.png)
 
 ### CNN Setup Instructions
 [put the train data set from this link - https://www.kaggle.com/c/dogs-vs-cats/data - ](https://www.kaggle.com/c/dogs-vs-cats/data) into the following directories:  
